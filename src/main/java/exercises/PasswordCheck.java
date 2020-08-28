@@ -39,27 +39,8 @@ public class PasswordCheck {
         System.out.println("Is a long password");
         System.out.println(longPassword);
 
-        boolean hasSequence = checkForSequence();
-        System.out.println("Has a sequence");
-        System.out.println(hasSequence);
+        boolean hasSequence = checkThreeRepeatedCharacters();
 
-        password = "abc";
-        hasSequence = checkForSequence();
-        System.out.println("Has a sequence");
-        System.out.println(password);
-        System.out.println(hasSequence);
-
-        password = "12345";
-        hasSequence = checkForSequence();
-        System.out.println("Has a sequence");
-        System.out.println(password);
-        System.out.println(hasSequence);
-
-        password = "asdlkjlaglkj";
-        hasSequence = checkForSequence();
-        System.out.println("Has a sequence");
-        System.out.println(password);
-        System.out.println(hasSequence);
 
     }
 
@@ -99,11 +80,13 @@ public class PasswordCheck {
         return matcher.lookingAt();
     }
 
-    public boolean checkForSequence(){
-        Pattern pattern = Pattern.compile("(([a-z0-9])\\2?(?!\\2))+");
-        //Pattern pattern = Pattern.compile("[]");
-        Matcher matcher = pattern.matcher(this.password);
-        return matcher.lookingAt();
+    public boolean checkThreeRepeatedCharacters(){
+        int repeats = 0;
+
+        for (char c: this.password.toCharArray()){
+            System.out.println("LALILULELO");
+        }
+        return true;
     }
 
 }
