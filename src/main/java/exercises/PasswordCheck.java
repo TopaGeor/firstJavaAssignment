@@ -48,7 +48,17 @@ public class PasswordCheck {
             else if (score == 5) System.out.println("Strong Password");
             else if (score == 6) System.out.println("Very Strong Password");
         }
-        else System.out.println("Invalid password");
+        else {
+            System.out.println("Invalid password");
+            System.out.println("The password should have:");
+            System.out.println("An uppercase letter");
+            System.out.println("A lowercase letter");
+            System.out.println("A number");
+            System.out.println("A special character");
+            System.out.println("Password must have a length of 8");
+            System.out.println("Password must not have 3 same characters");
+            System.out.println("Password must not have 3 consecutive characters");
+        }
     }
 
     /**
