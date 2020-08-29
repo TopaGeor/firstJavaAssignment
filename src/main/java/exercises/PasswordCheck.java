@@ -4,8 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static java.lang.StrictMath.abs;
 
 @Data
 @NoArgsConstructor
@@ -15,33 +19,33 @@ public class PasswordCheck {
 
 
     public void testPassword(){
+        int score = 0;
         boolean uppercase = checkUppercase();
-        System.out.println("Has an uppercase character");
-        System.out.println(uppercase);
+        if(uppercase) score++;
 
         boolean lowercase = checkLowercase();
-        System.out.println("Has a lowercase character");
-        System.out.println(lowercase);
+        if(lowercase) score++;
 
         boolean hasNumber = checkForNumber();
-        System.out.println("Has a number");
-        System.out.println(hasNumber);
+        if(hasNumber) score++;
 
         boolean hasSpecialCharacter = checkForSpecialCharacter();
-        System.out.println("Has a special character");
-        System.out.println(hasSpecialCharacter);
+        if (hasSpecialCharacter) score++;
 
         boolean hasWhiteSpaces = checkForWhiteSpace();
-        System.out.println("Has white space character");
-        System.out.println(hasWhiteSpaces);
-
-        boolean longPassword = checkLength();
-        System.out.println("Is a long password");
-        System.out.println(longPassword);
+        if (!hasWhiteSpaces) score++;
 
         boolean hasSequence = checkThreeRepeatedCharacters();
+        boolean hasConsecutiveCharacters = checkForConsecutiveCharacters();
+        if (!hasSequence && !hasConsecutiveCharacters) score++;
 
-
+        if(checkLength()){
+            score++; // if the function checkLength is true then the password has one more point
+            if (score < 5) System.out.println("Password OK");
+            else if (score == 5) System.out.println("Strong Password");
+            else if (score == 6) System.out.println("Very Strong Password");
+        }
+        else System.out.println("Invalid password");
     }
 
     public boolean checkUppercase(){
@@ -81,12 +85,43 @@ public class PasswordCheck {
     }
 
     public boolean checkThreeRepeatedCharacters(){
-        int repeats = 0;
-
+        int repeats = 1;
+        char old_char = ' ';
         for (char c: this.password.toCharArray()){
-            System.out.println("LALILULELO");
+            if (c == old_char){
+                repeats++;
+                if (repeats >= 3){
+                    return true;
+                }
+            }
+            else {
+                old_char = c;
+                repeats = 1;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkForConsecutiveCharacters(){
+        char[] letters = password.toCharArray();
+        List<Integer> numericList = new ArrayList<>();
+        for(Character c: letters){
+            numericList.add(Character.getNumericValue(c));
+        }
+
+        int repeats = 0;
+        System.out.println(numericList);
+        for(int i = 0; i < numericList.size() - 1; i++){
+            if (abs(numericList.get(i) - numericList.get(i + 1)) == 1) {
+                repeats++;
+                if (repeats >= 3) {
+                    return true;
+                }
+            }
+            else {
+                repeats = 0;
+            }
         }
         return true;
     }
-
 }
