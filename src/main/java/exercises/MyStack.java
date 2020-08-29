@@ -1,30 +1,26 @@
 package exercises;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class MyStack {
-    private ArrayList<Character> array;
+    private List<Character> array;
 
     public MyStack(){
-        array = new ArrayList<Character>();
+        array = new ArrayList<>();
     }
 
     public void push(Character s){
         array.add(s);
-        return;
     }
 
     public void pushString(String string){
         for (char s: string.toCharArray()) {
             array.add(s);
         }
-        return;
     }
 
     public Character pop(){
@@ -42,7 +38,6 @@ public class MyStack {
         if (size < 1){
             return null;
         }
-        char c = array.get(size - 1);
-        return c;
+        return  array.get(size - 1);
     }
 }
