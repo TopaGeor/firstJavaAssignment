@@ -71,7 +71,7 @@ public class ArraysCollections {
     Write a program that returns the digits of number in descending order
     */
     public ArrayList<Integer> digitsDescendingOrder(int n){
-        ArrayList<Integer> digits = new ArrayList<>();
+        ArrayList<Integer> digits = new ArrayList<Integer>();
         while(n > 1) {
             digits.add(n % 10);
             n /= 10;
@@ -90,10 +90,11 @@ public class ArraysCollections {
             localStack.push(word.toCharArray()[i]);
         }
 
-        int startPos = 0;
+        int startPos;
         if (word.length() % 2 == 0) {
             startPos = word.length() / 2;
-        } else {
+        }
+        else {
             startPos = (word.length() + 1) / 2;
         }
 

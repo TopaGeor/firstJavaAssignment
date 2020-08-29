@@ -10,7 +10,6 @@ public class Main {
         ArraysCollections set2 = new ArraysCollections();
         //set2.runAllFuctions();
 
-        //!#$%^&*_+=<>,.?/;:|
         PasswordCheck set3 = new PasswordCheck("Lalilulelo1.");
         set3.testPassword();
 
