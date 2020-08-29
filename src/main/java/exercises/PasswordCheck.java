@@ -110,7 +110,6 @@ public class PasswordCheck {
         }
 
         int repeats = 0;
-        System.out.println(numericList);
         for(int i = 0; i < numericList.size() - 1; i++){
             if (abs(numericList.get(i) - numericList.get(i + 1)) == 1) {
                 repeats++;
