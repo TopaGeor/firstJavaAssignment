@@ -3,12 +3,12 @@ import exercises.PasswordCheck;
 import exercises.SimpleAlgorithms;
 
 public class Main {
-    public static void main(String args[]){
+    public static void main(String[] args){
         SimpleAlgorithms set1 = new SimpleAlgorithms();
-        //set1.runAllFunctions();
+        set1.runAllFunctions();
 
         ArraysCollections set2 = new ArraysCollections();
-        //set2.runAllFuctions();
+        set2.runAllFunctions();
 
         PasswordCheck set3 = new PasswordCheck("Lalilulelo1.");
         set3.testPassword();

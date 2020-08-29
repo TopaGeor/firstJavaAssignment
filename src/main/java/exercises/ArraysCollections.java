@@ -3,28 +3,28 @@ package exercises;
 import java.util.*;
 
 public class ArraysCollections {
-    private ArrayList<Integer> anArray;
+    private List<Integer> classList;
     private SimpleAlgorithms simpleAlgo;
     private List<Integer> testingInput = Arrays.asList(1, 2, 3, 4, 5);
     private String testString = "AbdBa";
 
     public ArraysCollections(){
-        anArray = new ArrayList<Integer>(testingInput);
+        classList = new ArrayList<>(testingInput);
         simpleAlgo = new SimpleAlgorithms();
     }
 
-    public void runAllFuctions(){
-        System.out.println(onlyPrimes(anArray));
+    public void runAllFunctions(){
+        System.out.println(onlyPrimes(classList));
 
         System.out.println("Find the prime numbers of the array:");
-        System.out.println(anArray);
+        System.out.println(classList);
         System.out.println("The prime numbers are:");
-        anArray.addAll(testingInput);
+        classList.addAll(testingInput);
 
         System.out.println("Array for the second question:");
-        System.out.println(anArray);
+        System.out.println(classList);
         System.out.println("The result is:");
-        System.out.println(eliminateDuplicates(anArray));
+        System.out.println(eliminateDuplicates(classList));
 
         System.out.println("Find the digits of the number 234145 and return them in reverse order:");
         System.out.println(digitsDescendingOrder(234145));
@@ -48,8 +48,8 @@ public class ArraysCollections {
     /*
     Given a list of integers, return a sub list that contains only the prime numbers
     */
-    public ArrayList<Integer> onlyPrimes(ArrayList<Integer> aList){
-        ArrayList<Integer> returnArray = new ArrayList<Integer>();
+    public ArrayList<Integer> onlyPrimes(List<Integer> aList){
+        ArrayList<Integer> returnArray = new ArrayList<>();
         for (Integer i: aList) {
             if (simpleAlgo.isPrime(i)){
                 returnArray.add(i);
@@ -61,22 +61,21 @@ public class ArraysCollections {
     /*
     Implement a way of finding a list eliminating the duplicates from a list.
     */
-    public ArrayList<Integer> eliminateDuplicates(ArrayList<Integer> aList){
-        HashSet<Integer> aSet = new HashSet<Integer>(aList);
-        ArrayList<Integer> returnArray = new ArrayList<Integer>(aSet);
-        return returnArray;
+    public ArrayList<Integer> eliminateDuplicates(List<Integer> aList){
+        HashSet<Integer> aSet = new HashSet<>(aList);
+        return new ArrayList<>(aSet);
     }
 
     /*
     Write a program that returns the digits of number in descending order
     */
     public ArrayList<Integer> digitsDescendingOrder(int n){
-        ArrayList<Integer> digits = new ArrayList<Integer>();
+        ArrayList<Integer> digits = new ArrayList<>();
         while(n > 1) {
             digits.add(n % 10);
             n /= 10;
         }
-        Collections.sort(digits, Collections.reverseOrder());
+        digits.sort(Comparator.reverseOrder());
         return digits;
     }
 
@@ -107,6 +106,5 @@ public class ArraysCollections {
             }
         }
         System.out.println("Word is symmetric");
-        return;
     }
 }
