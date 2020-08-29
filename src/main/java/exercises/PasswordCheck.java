@@ -18,6 +18,9 @@ public class PasswordCheck {
     private String password;
 
 
+    /**
+     * Check if the password is passing from all of the functions
+     */
     public void testPassword(){
         int score = 0;
         boolean uppercase = checkUppercase();
@@ -48,42 +51,70 @@ public class PasswordCheck {
         else System.out.println("Invalid password");
     }
 
+    /**
+     * Check if the password has an uppercase
+     * @return true if it has otherwise false, a strong password will have true
+     */
     public boolean checkUppercase(){
         Pattern pattern = Pattern.compile("(?=.*[A-Z])");
         Matcher matcher = pattern.matcher(this.password);
         return matcher.lookingAt();
     }
 
+    /**
+     * Check if the password has a lowercase, using regular expression
+     * @return true if it has otherwise false, a strong password will have true
+     */
     public boolean checkLowercase(){
         Pattern pattern = Pattern.compile("(?=.*[a-z])");
         Matcher matcher = pattern.matcher(this.password);
         return matcher.lookingAt();
     }
 
+    /**
+     * Check if the password has a number, using regular expression
+     * @return true if it has otherwise false, a strong password will have true
+     */
     public boolean checkForNumber(){
         Pattern pattern = Pattern.compile("(?=.*[0-9])");
         Matcher matcher = pattern.matcher(this.password);
         return matcher.lookingAt();
     }
 
+    /**
+     * Check if the password has a special character, using regular expression
+     * @return true if it has otherwise false, a strong password will have true
+     */
     public boolean checkForSpecialCharacter(){
         Pattern pattern = Pattern.compile("(?=.*[~!@#$%^&*_+=<>,.?/;:|])");
         Matcher matcher = pattern.matcher(this.password);
         return matcher.lookingAt();
     }
 
+    /**
+     * Check if the password has a white space, using regular expression
+     * @return true if it has otherwise false, a strong password will have false
+     */
     public boolean checkForWhiteSpace(){
         Pattern pattern = Pattern.compile("(?=\\S+$)");
         Matcher matcher = pattern.matcher(this.password);
         return !matcher.lookingAt();
     }
 
+    /**
+     * Check if the password has length bigger than 8, using regular expression
+     * @return true if it has otherwise false, is a mandatory field, a strong password will have true
+     */
     public boolean checkLength(){
         Pattern pattern = Pattern.compile(".{8,}");
         Matcher matcher = pattern.matcher(this.password);
         return matcher.lookingAt();
     }
 
+    /**
+     * Check if the password has three repeated characters, example 111
+     * @return true if it has otherwise false, a strong password will have false
+     */
     public boolean checkThreeRepeatedCharacters(){
         int repeats = 1;
         char old_char = ' ';
@@ -102,6 +133,10 @@ public class PasswordCheck {
         return false;
     }
 
+    /**
+     * Check if the password has characters that are consecutive in ASCII
+     * @return true if it has otherwise false, a strong password will have false
+     */
     public boolean checkForConsecutiveCharacters(){
         char[] letters = password.toCharArray();
         List<Integer> numericList = new ArrayList<>();
