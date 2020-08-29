@@ -13,6 +13,9 @@ public class ArraysCollections {
         simpleAlgo = new SimpleAlgorithms();
     }
 
+    /**
+     * Run all functions
+     */
     public void runAllFunctions(){
         System.out.println(onlyPrimes(classList));
 
@@ -45,11 +48,13 @@ public class ArraysCollections {
         checkWordSymmetric(testString);
     }
 
-    /*
-    Given a list of integers, return a sub list that contains only the prime numbers
-    */
-    public ArrayList<Integer> onlyPrimes(List<Integer> aList){
-        ArrayList<Integer> returnArray = new ArrayList<>();
+    /**
+     * Given a list of integers, return a sub list that contains only the prime numbers
+     * @param aList a list of integers
+     * @return return an ArrayList with the prime numbers from the aList
+     */
+    public List<Integer> onlyPrimes(List<Integer> aList){
+        List<Integer> returnArray = new ArrayList<>();
         for (Integer i: aList) {
             if (simpleAlgo.isPrime(i)){
                 returnArray.add(i);
@@ -58,19 +63,24 @@ public class ArraysCollections {
         return returnArray;
     }
 
-    /*
-    Implement a way of finding a list eliminating the duplicates from a list.
-    */
+    /**
+     * Implement a way of finding a list eliminating the duplicates from a list.
+     * @param aList a list of integers
+     * @return return an ArrayList with the unique elements from aList
+     */
     public ArrayList<Integer> eliminateDuplicates(List<Integer> aList){
-        HashSet<Integer> aSet = new HashSet<>(aList);
+        Set<Integer> aSet = new HashSet<>(aList);
         return new ArrayList<>(aSet);
     }
 
-    /*
-    Write a program that returns the digits of number in descending order
-    */
-    public ArrayList<Integer> digitsDescendingOrder(int n){
-        ArrayList<Integer> digits = new ArrayList<>();
+
+    /**
+     * Write a program that returns the digits of number in descending order
+     * @param n an integer
+     * @return a list of integers that are in reverse order
+     */
+    public List<Integer> digitsDescendingOrder(int n){
+        List<Integer> digits = new ArrayList<>();
         while(n > 1) {
             digits.add(n % 10);
             n /= 10;
@@ -79,8 +89,9 @@ public class ArraysCollections {
         return digits;
     }
 
-    /*
-    Write a program that check if a word is symmetric,  ignoring cases (i.e. AbdBa is symmetric).
+    /**
+     * Write a program that check if a word is symmetric,  ignoring cases (i.e. AbdBa is symmetric).
+     * @param word the word that we will check if it is symmetric
      */
     public void checkWordSymmetric(String word){
         MyStack localStack = new MyStack();
