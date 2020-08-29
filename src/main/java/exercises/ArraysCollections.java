@@ -17,13 +17,12 @@ public class ArraysCollections {
      * Run all functions
      */
     public void runAllFunctions(){
-        System.out.println(onlyPrimes(classList));
-
         System.out.println("Find the prime numbers of the array:");
         System.out.println(classList);
         System.out.println("The prime numbers are:");
-        classList.addAll(testingInput);
+        System.out.println(onlyPrimes(classList));
 
+        classList.addAll(testingInput);
         System.out.println("Array for the second question:");
         System.out.println(classList);
         System.out.println("The result is:");
